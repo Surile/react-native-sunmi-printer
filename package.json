@@ -1,6 +1,6 @@
 {
   "name": "@heasy/react-native-sunmi-printer",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "商米内置打印",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -91,7 +91,7 @@
       "tagName": "v${version}"
     },
     "npm": {
-      "publish": false 
+      "publish": false
     },
     "github": {
       "release": true
