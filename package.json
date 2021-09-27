@@ -1,6 +1,6 @@
 {
   "name": "react-native-sunmi-printer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "商米内置打印",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -33,8 +33,9 @@
   },
   "keywords": [
     "react-native",
-    "ios",
-    "android"
+    "android",
+    "sunmi",
+    "SunmiPrinterDemo"
   ],
   "repository": "https://github.com/Surile/react-native-sunmi-printer",
   "author": "夜雨 <mhecy98@gmail.com> (https://github.com/Surile)",
