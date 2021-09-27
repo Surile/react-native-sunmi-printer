@@ -1,4 +1,4 @@
-# react-native-sunmi-printer
+# @heasy/react-native-sunmiprinter
 
 Caution: this is not the official project. I share it because I am working on this device but no any official support in react-native It's welcome to ask any question about the usage,problems or feature required, I will support ASAP.
 
@@ -16,13 +16,13 @@ Offical Demos plz refer: https://github.com/shangmisunmi/SunmiPrinterDemo
 Using npm：
 
 ```bash
-npm install react-native-sunmiprinter --save |
+npm install @heasy/react-native-sunmiprinter --save |
 ```
 
 or using yarn：
 
 ```bash
-yarn add react-native-sunmiprinter
+yarn add @heasy/react-native-sunmiprinter
 ```
 
 ## Linking
@@ -34,7 +34,7 @@ Previous versions need to do manual linking.
 ## Usage
 
 ```js
-import SunmiPrinter from 'react-native-sunmi-printer';
+import SunmiPrinter from '@heasy/react-native-sunmiprinter';
 
 SunmiPrinter.printerText('测试打印\n');
 ```
