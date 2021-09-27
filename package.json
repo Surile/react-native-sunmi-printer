@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/Surile/react-native-sunmi-printer#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
