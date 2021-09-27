@@ -1,5 +1,5 @@
 {
-  "name": "react-native-sunmiprinter",
+  "name": "@hercules/react-native-sunmi-printer",
   "version": "1.0.0",
   "description": "商米内置打印",
   "main": "lib/commonjs/index",
