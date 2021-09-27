@@ -1,5 +1,5 @@
 {
-  "name": "@heasy/react-native-sunmi-printer",
+  "name": "@hercules/react-native-sunmi-printer",
   "version": "1.1.2",
   "description": "商米内置打印",
   "main": "lib/commonjs/index",
@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/Surile/react-native-sunmi-printer#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^11.0.0",
