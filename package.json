@@ -1,5 +1,5 @@
 {
-  "name": "@surile/react-native-sunmiprinter",
+  "name": "@heasy/react-native-sunmi-printer",
   "version": "1.1.2",
   "description": "商米内置打印",
   "main": "lib/commonjs/index",
