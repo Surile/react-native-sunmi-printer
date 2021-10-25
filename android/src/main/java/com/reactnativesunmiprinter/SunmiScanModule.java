@@ -51,7 +51,7 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void scan(final Promise promise) {
+  public void scan(Promise promise) {
     Activity currentActivity = getCurrentActivity();
     if (currentActivity == null) {
       promise.reject(E_ACTIVITY_DOES_NOT_EXIST, "Activity doesn't exist");

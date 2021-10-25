@@ -309,7 +309,7 @@ type SunmiScanType = {
   /**
    * 摄像头扫码
    */
-  scan: () => void;
+  scan: () => Promise<any>;
 };
 
 export const SunmiScan = SunmiScanModule as SunmiScanType;

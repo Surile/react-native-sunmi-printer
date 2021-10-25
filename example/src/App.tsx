@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  DeviceEventEmitter,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import SunmiPrinter, {
   AlignValue,
   SunmiScan,
@@ -69,10 +63,13 @@ export default function App() {
         // eslint-disable-next-line react-native/no-inline-styles
         style={{ ...styles.button, marginTop: 10 }}
         onPress={() => {
-          SunmiScan.scan();
-          DeviceEventEmitter.addListener('onScanSuccess', (val) => {
-            console.log('val', val);
-          });
+          SunmiScan.scan()
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => {
+              console.log('error---->', err);
+            });
         }}
       >
         <Text style={styles.buttonText}>扫码</Text>
