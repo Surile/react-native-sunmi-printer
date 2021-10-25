@@ -16,7 +16,7 @@ Offical Demos plz refer: https://github.com/shangmisunmi/SunmiPrinterDemo
 Using npm：
 
 ```bash
-npm install @heasy/react-native-sunmiprinter --save |
+npm install @heasy/react-native-sunmiprinter --save 
 ```
 
 or using yarn：
@@ -37,6 +37,14 @@ Previous versions need to do manual linking.
 import SunmiPrinter from '@heasy/react-native-sunmiprinter';
 
 SunmiPrinter.printerText('测试打印\n');
+```
+
+## Scan
+
+```js
+import { SunmiScan } from '@heasy/react-native-sunmiprinter'
+
+SunmiScan.scan()
 ```
 
 ## API
