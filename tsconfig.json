@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-sunmi-printer": ["./src/index"]
+      "@heasy/react-native-sunmi-printer": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

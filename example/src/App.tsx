@@ -1,6 +1,15 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import SunmiPrinter, { AlignValue } from 'react-native-sunmi-printer';
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  DeviceEventEmitter,
+} from 'react-native';
+import SunmiPrinter, {
+  AlignValue,
+  SunmiScan,
+} from '@heasy/react-native-sunmi-printer';
 
 export default function App() {
   const _printRecieve = () => {
@@ -55,6 +64,18 @@ export default function App() {
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={_printRecieve}>
         <Text style={styles.buttonText}>打印</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{ ...styles.button, marginTop: 10 }}
+        onPress={() => {
+          SunmiScan.scan();
+          DeviceEventEmitter.addListener('onScanSuccess', (val) => {
+            console.log('val', val);
+          });
+        }}
+      >
+        <Text style={styles.buttonText}>扫码</Text>
       </TouchableOpacity>
     </View>
   );
