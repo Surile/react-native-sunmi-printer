@@ -16,7 +16,7 @@ Offical Demos plz refer: https://github.com/shangmisunmi/SunmiPrinterDemo
 Using npm：
 
 ```bash
-npm install @heasy/react-native-sunmiprinter --save 
+npm install @heasy/react-native-sunmiprinter --save
 ```
 
 or using yarn：
@@ -42,9 +42,9 @@ SunmiPrinter.printerText('测试打印\n');
 ## Scan
 
 ```js
-import { SunmiScan } from '@heasy/react-native-sunmiprinter'
+import { SunmiScan } from '@heasy/react-native-sunmiprinter';
 
-SunmiScan.scan()
+SunmiScan.scan();
 ```
 
 ## API
@@ -85,6 +85,8 @@ The example app in this repository shows an example usage of every single API, c
 | [getCutPaperTimes()](#getCutPaperTimes)                                 | `Promise<number>` | ❌  |   ✅    |   ❌    | ❌  |
 | [openDrawer()](#openDrawer)                                             | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [getDrawerStatus()](#getCutPaperTimes)                                  | `null`            | ❌  |   ✅    |   ❌    | ❌  |
+| [printBitmap()](#printBitmap)                                           | `null`            | ❌  |   ✅    |   ❌    | ❌  |
+| [printBitmapCustom()](#printBitmapCustom)                               | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 
 ## Contributing
 

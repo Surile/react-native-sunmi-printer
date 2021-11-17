@@ -303,6 +303,23 @@ type SunmiPrinterType = {
    * @description 可以通过此接⼝在部分具有连接钱箱功能的机型上获取钱箱开关状态,
    */
   getDrawerStatus: () => void;
+  /**
+   * 打印图片
+   * 图⽚最⼤像素需要宽x⾼⼩于250万，且宽度根据纸张规格设置（58为384像素，80为576像素），
+   * 如果超过纸张宽度将不显示
+   *
+   * @param bitmap
+   */
+  printBitmap: (bitmap: any) => void;
+  /**
+   * 打印图⽚(2)
+   * 图⽚像素分辨率⼩于200万，且宽度根据纸张规格设置（58为384像素，80为576像素），如果超
+   * 过纸张宽度将不显示
+   *
+   * @param bitmap
+   * @param type
+   */
+  printBitmapCustom: (bitmap: any, type: number) => void;
 };
 
 type SunmiScanType = {
