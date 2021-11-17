@@ -44,6 +44,13 @@ SunmiPrinter.printerText('测试打印\n');
 ```js
 import { SunmiScan } from '@heasy/react-native-sunmiprinter';
 
+useEffect(() => {
+  DeviceEventEmitter.addListener('onScanSuccess', (msg) => {
+    console.log('result', msg);
+  });
+  return () => DeviceEventEmitter.removeAllListeners('onScanSuccess');
+}, []);
+
 SunmiScan.scan();
 ```
 
