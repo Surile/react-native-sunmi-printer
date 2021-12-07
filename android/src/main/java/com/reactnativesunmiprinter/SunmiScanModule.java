@@ -43,6 +43,7 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
   public SunmiScanModule(ReactApplicationContext context) {
     super(context);
     reactContext = context;
+    reactContext.addActivityEventListener(mActivityEventListener);
   }
 
   @Override
@@ -61,10 +62,7 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
     try {
       Intent intent = new Intent("com.summi.scan");
       intent.setPackage("com.sunmi.sunmiqrcodescanner");
-      intent.putExtra("CURRENT_PPI", 0X0003);
       intent.putExtra("PLAY_SOUND", true);
-      intent.putExtra("IS_SHOW_SETTING", false);
-      intent.putExtra("IS_SHOW_ALBUM", false);//
       currentActivity.startActivityForResult(intent, START_SCAN);
     } catch (Exception e) {
       mPickerPromise.reject(E_FAILED_TO_SHOW_SCAN, e);
