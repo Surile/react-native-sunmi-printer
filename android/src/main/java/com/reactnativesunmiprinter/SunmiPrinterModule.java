@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.os.RemoteException;
 import android.util.Base64;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -83,7 +82,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
     try {
       InnerPrinterManager.getInstance().bindService(reactContext, innerPrinterCallback);
     } catch (RemoteException e) {
-      Toast.makeText(getReactApplicationContext(), "failed", Toast.LENGTH_LONG).show();
+      Log.i(TAG, "ERROR: " + e.getMessage());
     }
   }
 
