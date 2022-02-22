@@ -323,7 +323,7 @@ type SunmiPrinterType = {
   /**
    * 是否存在打印机服务
    */
-  hasPrinter: () => boolean;
+  hasPrinter: () => Promise<boolean>;
 };
 
 type SunmiScanType = {
