@@ -215,6 +215,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   /**
    * 是否存在打印机服务
    */
+  @ReactMethod
   public boolean hasPrinter() {
     final boolean hasPrinterService = printerService != null;
     return hasPrinterService;

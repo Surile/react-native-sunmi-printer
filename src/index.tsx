@@ -320,6 +320,10 @@ type SunmiPrinterType = {
    * @param type
    */
   printBitmapCustom: (bitmap: any, type: number) => void;
+  /**
+   * 是否存在打印机服务
+   */
+  hasPrinter: () => boolean;
 };
 
 type SunmiScanType = {
