@@ -30,10 +30,12 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
       if (intent != null) {
         Bundle bundle = intent.getExtras();
         ArrayList<HashMap<String, String>> result = (ArrayList<HashMap<String, String>>) bundle.getSerializable("data");
-        Iterator<HashMap<String, String>> it = result.iterator();
-        while (it.hasNext()) {
-          HashMap hashMap = it.next();
-          sendEvent(hashMap.get("VALUE").toString());
+        if (null != result) {
+          Iterator<HashMap<String, String>> it = result.iterator();
+          while (it.hasNext()) {
+            HashMap hashMap = it.next();
+            sendEvent(hashMap.get("VALUE").toString());
+          }
         }
       }
     }
