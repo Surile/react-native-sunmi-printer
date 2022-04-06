@@ -311,7 +311,7 @@ type SunmiPrinterType = {
    * @param encodedString
    * @param pixelWidth
    */
-  printBitmap: (encodedString: string,pixelWidth:number) => void;
+  printBitmap: (encodedString: string, pixelWidth: number) => void;
   /**
    * 打印图⽚(2)
    * 图⽚像素分辨率⼩于200万，且宽度根据纸张规格设置（58为384像素，80为576像素），如果超
