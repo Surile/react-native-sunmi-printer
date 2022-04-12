@@ -3,6 +3,7 @@ package com.reactnativesunmiprinter;
 import android.content.ComponentName;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.RemoteException;
 import android.util.Base64;
 import android.util.Log;
@@ -380,7 +381,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
    * @param pixelWidth
    */
   @ReactMethod
-  public void printBitmap(String encodedString, Int pixelWidth) throws RemoteException {
+  public void printBitmap(String encodedString, int pixelWidth) throws RemoteException {
     final String pureBase64Encoded = encodedString.substring(encodedString.indexOf(",")  + 1);
     final byte[] decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT);
     Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
