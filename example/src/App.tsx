@@ -40,7 +40,7 @@ export default function App() {
     SunmiPrinter.printerText('扫码自助申请电子发票\n');
     SunmiPrinter.lineWrap(1);
     SunmiPrinter.printColumnsString(
-      ['服务员', '赵琳阳'],
+      ['服务员', 'Surile'],
       [60, 120],
       [AlignValue.LEFT, AlignValue.RIGHT]
     );
