@@ -72,6 +72,7 @@ The example app in this repository shows an example usage of every single API, c
 | [sendRAWData()](#sendRAWData)                                           | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [setPrinterStyle()](#setPrinterStyle)                                   | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [setAlignment()](#setAlignment)                                         | `null`            | ❌  |   ✅    |   ❌    | ❌  |
+| [setFontName()](#setFontName)                                           | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [setFontSize()](#setFontSize)                                           | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [setFontWeight()](#setFontWeight)                                       | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [printerText()](#printerText)                                           | `null`            | ❌  |   ✅    |   ❌    | ❌  |
