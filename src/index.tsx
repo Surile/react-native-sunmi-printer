@@ -113,6 +113,12 @@ type SunmiPrinterType = {
    */
   setAlignment: (align: AlignValue) => void;
   /**
+   * 设置自定义字体
+   * @param typeface
+   * @description 指定要使⽤的⾃定义字体名称，⽬前仅⽀持⽮量字体，字体需预置在应⽤assets⽬录
+   */
+  setFontName: (typeface: string) => void;
+  /**
    * 设置字体大小
    *
    * @param size

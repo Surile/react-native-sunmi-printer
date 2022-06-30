@@ -232,6 +232,16 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   }
 
   /**
+  * 设置自定义字体
+  *
+  */
+  @ReactMethod
+  public void setFontName(String typeface) throws RemoteException {
+    printerService.setFontName(typeface, innerResultCallback);
+  }
+
+
+  /**
    * @param key
    * @param value
    */
