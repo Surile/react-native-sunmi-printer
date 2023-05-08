@@ -65,6 +65,7 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
       intent.setPackage("com.sunmi.sunmiqrcodescanner");
       intent.putExtra("IS_EAN_13_ENABLE", false);
       intent.putExtra("IS_INTERLEAVED_2_OF_5_ENABLE", true);
+      intent.putExtra("IS_SHOW_SETTING", false);
       intent.putExtra("PLAY_SOUND", true);
       currentActivity.startActivityForResult(intent, START_SCAN);
     } catch (Exception e) {
