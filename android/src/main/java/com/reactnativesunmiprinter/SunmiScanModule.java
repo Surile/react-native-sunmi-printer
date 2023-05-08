@@ -24,6 +24,9 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
   private static final int START_SCAN = 0x0000;
   private static final String E_ACTIVITY_DOES_NOT_EXIST = "E_ACTIVITY_DOES_NOT_EXIST";
   private static final String E_FAILED_TO_SHOW_SCAN = "E_FAILED_TO_SHOW_SCAN";
+  private static final String ACTION_DATA_CODE_RECEIVED = "com.sunmi.scanner.ACTION_DATA_CODE_RECEIVED";
+private static final String DATA = "data";
+private static final String SOURCE = "source_byte";
   private Promise mPickerPromise;
 
   private BroadcastReceiver receiver = new BroadcastReceiver() {
