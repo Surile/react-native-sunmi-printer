@@ -1,6 +1,6 @@
 import { NativeModules } from 'react-native';
 
-const { SunmiPrinter, SunmiScanModule } = NativeModules;
+const { SunmiPrinter, SunmiScanModule, SunmiScannerModule } = NativeModules;
 
 export enum PrinterStyleKey {
   // 文本倍宽
@@ -338,7 +338,14 @@ type SunmiScanType = {
    * 摄像头扫码
    */
   scan: () => Promise<any>;
+
+    /**
+   * 发送 KeyEvent
+   */
+    sendKeyEvent: () => void;
 };
+
+export const SunmiScanner= SunmiScannerModule
 
 export const SunmiScan = SunmiScanModule as SunmiScanType;
 
