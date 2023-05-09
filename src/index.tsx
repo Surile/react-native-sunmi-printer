@@ -344,8 +344,22 @@ type SunmiScanType = {
    */
     sendKeyEvent: () => void;
 };
+type SunmiScannerType = {
+  /**
+   * 摄像头扫码
+   */
+  scan: () => Promise<any>;
 
-export const SunmiScanner= SunmiScannerModule
+    /**
+   * 发送 KeyEvent
+   */
+    sendKeyEvent: () => void;
+    void: () => void;
+    recycle: () => void;
+    getScannerModel:()=>number;
+};
+
+export const SunmiScanner= SunmiScannerModule as SunmiScannerType
 
 export const SunmiScan = SunmiScanModule as SunmiScanType;
 
