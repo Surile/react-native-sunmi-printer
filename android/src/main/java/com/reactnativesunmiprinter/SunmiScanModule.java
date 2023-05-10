@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.BaseActivityEventListener;
@@ -83,8 +84,6 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
     try {
       Intent intent = new Intent("com.sunmi.scan");
       intent.setPackage("com.sunmi.sunmiqrcodescanner");
-      intent.putExtra("IS_EAN_13_ENABLE", false);
-      intent.putExtra("IS_INTERLEAVED_2_OF_5_ENABLE", true);
       intent.putExtra("PLAY_SOUND", true);
       currentActivity.startActivityForResult(intent, START_SCAN);
     } catch (Exception e) {
