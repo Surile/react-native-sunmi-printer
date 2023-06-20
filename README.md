@@ -10,6 +10,7 @@ Offical Demos plz refer: https://github.com/shangmisunmi/SunmiPrinterDemo
 - [Linking](#Linking)
 - [Usage](#Usage)
 - [API](#API)
+- [Broadcast Events Listener](#Broadcast-Event-Listener)
 
 ## Installation:
 
@@ -36,7 +37,7 @@ Previous versions need to do manual linking.
 ```js
 import SunmiPrinter from '@heasy/react-native-sunmi-printer';
 
-SunmiPrinter.printerText('测试打印\n');
+SunmiPrinter.printerText('Hello World\n');
 ```
 
 ## Scan
@@ -66,7 +67,7 @@ The example app in this repository shows an example usage of every single API, c
 | [getPrinterVersion()](#getPrinterVersion)                               | `Promise<string>` | ❌  |   ✅    |   ❌    | ❌  |
 | [getServiceVersion()](#getServiceVersion)                               | `Promise<string>` | ❌  |   ✅    |   ❌    | ❌  |
 | [getPrinterModal()](#getPrinterModal)                                   | `Promise<string>` | ❌  |   ✅    |   ❌    | ❌  |
-| [getPrinterPaper()](#getPrinterPaper)                                   | `Promise<number>` | ❌  |   ✅    |   ❌    | ❌  |
+| [getPrinterPaper()](#getPrinterPaper)                                   | `Promise<string>` | ❌  |   ✅    |   ❌    | ❌  |
 | [getPrintedLength()](#getPrintedLength)                                 | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [updatePrinterState()](#updatePrinterState)                             | `Promise<number>` | ❌  |   ✅    |   ❌    | ❌  |
 | [sendRAWData()](#sendRAWData)                                           | `null`            | ❌  |   ✅    |   ❌    | ❌  |
@@ -95,6 +96,21 @@ The example app in this repository shows an example usage of every single API, c
 | [getDrawerStatus()](#getCutPaperTimes)                                  | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [printBitmap()](#printBitmap)                                           | `null`            | ❌  |   ✅    |   ❌    | ❌  |
 | [printBitmapCustom()](#printBitmapCustom)                               | `null`            | ❌  |   ✅    |   ❌    | ❌  |
+
+## Broadcast-Event-Listener
+
+You can enable `Output Via Broadcast` option in your SUNMI Device `Scanner's Settings` and then listen the `onScanSuccess` Event with the `result`.
+
+```js
+
+useEffect(() => {
+  DeviceEventEmitter.addListener('onScanSuccess', (msg) => {
+    console.log('result', msg);
+  });
+  return () => DeviceEventEmitter.removeAllListeners('onScanSuccess');
+}, []);
+
+```
 
 ## Contributing
 
