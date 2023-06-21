@@ -100,6 +100,7 @@ The example app in this repository shows an example usage of every single API, c
 ## Broadcast-Event-Listener
 
 You can enable `Output Via Broadcast` option in your SUNMI Device `Scanner's Settings` and then listen the `onScanSuccess` Event with the `result`.
+You have to use physical special key buttons on your SUNMI device or soft floating button on your device (if you enabled that)  to trigger infrared scanning for the barcodes . And then afterwards , you can get the result in the `onScanSuccess` event.
 
 ```js
 
