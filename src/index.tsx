@@ -77,7 +77,7 @@ type SunmiPrinterType = {
    * ⼿持打印机默认为58mm的纸张规格，台式打印机默认为80mm的纸张规格，但可以通过增加挡
    * 板并进⾏打印机配置设置为使⽤58mm的纸张规格，此接⼝会返回当前打印机设置的纸张规格；
    */
-  getPrinterPaper: () => Promise<number>;
+  getPrinterPaper: () => Promise<string>;
   /**
    * 获取打印头打印长度
    * ⽬前可获取到上电以来的打印⻓度，由于台式机和⼿持机的硬件区别，获取打印结果的返回略有

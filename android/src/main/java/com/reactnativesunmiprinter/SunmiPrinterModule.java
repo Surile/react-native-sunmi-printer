@@ -67,14 +67,14 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   InnerPrinterCallback innerPrinterCallback = new InnerPrinterCallback() {
     @Override
     protected void onConnected(SunmiPrinterService service) {
-      //这⾥即获取到绑定服务成功连接后的远程服务接⼝句柄
-      //可以通过service调⽤⽀持的打印⽅法
+      // 这⾥即获取到绑定服务成功连接后的远程服务接⼝句柄
+      // 可以通过service调⽤⽀持的打印⽅法
       printerService = service;
     }
 
     @Override
     protected void onDisconnected() {
-      //当服务异常断开后，会回调此⽅法，建议在此做重连策略
+      // 当服务异常断开后，会回调此⽅法，建议在此做重连策略
     }
   };
 
@@ -116,7 +116,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
 
   /*
    * 获取打印机序号
-   * */
+   */
   @ReactMethod
   public void getPrinterSerialNo(Promise promise) {
     try {
@@ -130,7 +130,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
 
   /*
    * 获取打印机固件版本号
-   * */
+   */
   @ReactMethod
   public void getPrinterVersion(Promise promise) {
     try {
@@ -157,14 +157,13 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   }
 
   /**
-   * 获取打印机当前的纸张规格
-   * ⼿持打印机默认为58mm的纸张规格，台式打印机默认为80mm的纸张规格，但可以通过增加挡
-   * 板并进⾏打印机配置设置为使⽤58mm的纸张规格，此接⼝会返回当前打印机设置的纸张规格；
+   * Returns paper width specification for the printer : 58mm or 80mm
    */
   @ReactMethod
   public void getPrinterPaper(Promise promise) {
     try {
-      promise.resolve(printerService.getPrinterPaper());
+
+      promise.resolve(printerService.getPrinterPaper() == 1 ? "58mm" : "80mm");
     } catch (RemoteException e) {
       e.printStackTrace();
       Log.i(TAG, "ERROR: " + e.getMessage());
@@ -232,14 +231,13 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   }
 
   /**
-  * 设置自定义字体
-  *
-  */
+   * 设置自定义字体
+   *
+   */
   @ReactMethod
   public void setFontName(String typeface) throws RemoteException {
     printerService.setFontName(typeface, innerResultCallback);
   }
-
 
   /**
    * @param key
@@ -286,7 +284,6 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
     }
   }
 
-
   /**
    * 打印文字
    * 若要修改打印⽂本的样式（如：对⻬⽅式、字体⼤⼩、加粗等），请在调⽤printText⽅法前设
@@ -298,7 +295,6 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   public void printerText(String text) throws RemoteException {
     printerService.printText(text, null);
   }
-
 
   /**
    * 打印指定字体，⼤⼩的⽂本
@@ -333,7 +329,8 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
    * @param colsAlign
    */
   @ReactMethod
-  public void printColumnsText(ReadableArray colrsTextAir, ReadableArray colsWidthArr, ReadableArray colsAlign) throws RemoteException {
+  public void printColumnsText(ReadableArray colrsTextAir, ReadableArray colsWidthArr, ReadableArray colsAlign)
+      throws RemoteException {
     String[] texts = new String[colrsTextAir.size()];
 
     for (int j = 0; j < colrsTextAir.size(); ++j) {
@@ -353,7 +350,6 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
     printerService.printColumnsText(texts, widths, aligns, null);
   }
 
-
   /**
    * 打印表格的一行，可以指定列宽、对齐方式
    *
@@ -362,8 +358,8 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
    * @param colsAlign
    */
   @ReactMethod
-  public void printColumnsString(ReadableArray colsTextArr, ReadableArray colsWidthArr, ReadableArray colsAlign) throws
-    RemoteException {
+  public void printColumnsString(ReadableArray colsTextArr, ReadableArray colsWidthArr, ReadableArray colsAlign)
+      throws RemoteException {
     String[] texts = new String[colsTextArr.size()];
 
     for (int j = 0; j < colsTextArr.size(); ++j) {
@@ -387,12 +383,13 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
    * 图⽚最⼤像素需要宽x⾼⼩于250万，且宽度根据纸张规格设置（58为384像素，80为576像素），
    * 如果超过纸张宽度将不显示
    * https://github.com/Surile/react-native-sunmi-printer/issues/1#issuecomment-1088685896
+   * 
    * @param encodedString
    * @param pixelWidth
    */
   @ReactMethod
   public void printBitmap(String encodedString, int pixelWidth) throws RemoteException {
-    final String pureBase64Encoded = encodedString.substring(encodedString.indexOf(",")  + 1);
+    final String pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
     final byte[] decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT);
     Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
     int w = decodedBitmap.getWidth();
@@ -424,8 +421,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
    * @param textPosition
    */
   @ReactMethod
-  public void printBarCode(String data, int symbology, int height, int width, int textPosition) throws
-    RemoteException {
+  public void printBarCode(String data, int symbology, int height, int width, int textPosition) throws RemoteException {
     printerService.printBarCode(data, symbology, height, width, textPosition, innerResultCallback);
   }
 
@@ -452,8 +448,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
    * @param errorlevel
    */
   @ReactMethod
-  public void print2DCode(String data, int symbology, int modulesize, int errorlevel) throws
-    RemoteException {
+  public void print2DCode(String data, int symbology, int modulesize, int errorlevel) throws RemoteException {
     printerService.print2DCode(data, symbology, modulesize, errorlevel, innerResultCallback);
   }
 
@@ -487,7 +482,6 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
     printerService.exitPrinterBuffer(commit);
   }
 
-
   /**
    * 提交事务打印
    * 将事务队列中的所有内容提交并打印，之后仍然处于事务打印模式
@@ -496,7 +490,6 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   public void commitPrinterBuffer() throws RemoteException {
     printerService.commitPrinterBuffer();
   }
-
 
   /**
    * 提交事务打印并回调结果
