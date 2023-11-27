@@ -412,6 +412,25 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
   }
 
   /**
+   * 打印图⽚(3)
+   * 图⽚像素分辨率⼩于200万，且宽度根据纸张规格设置（58为384像素，80为576像素），如果超
+   * 过纸张宽度将不显示
+   *
+   * @param bitmap
+   * @param type
+   */
+  @ReactMethod
+  public void printBitmapBase64Custom(String encodedString, int pixelWidth, int type) throws RemoteException {
+    final String pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
+    final byte[] decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT);
+    Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+	  int w = decodedBitmap.getWidth();
+    Integer h = decodedBitmap.getHeight();
+    Bitmap scaledImage = Bitmap.createScaledBitmap(decodedBitmap, pixelWidth, (pixelWidth / w) * h, false);
+    printerService.printBitmapCustom(scaledImage, type, innerResultCallback);
+  }
+
+  /**
    * 打印⼀维条码
    *
    * @param data
