@@ -327,7 +327,7 @@ type SunmiPrinterType = {
    * @param type
    */
   printBitmapCustom: (bitmap: any, type: number) => void;
-    /**
+  /**
    * 打印图⽚(3)
    * 图⽚像素分辨率⼩于200万，且宽度根据纸张规格设置（58为384像素，80为576像素），如果超
    * 过纸张宽度将不显示
