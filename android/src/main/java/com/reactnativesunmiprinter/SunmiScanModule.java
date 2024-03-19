@@ -95,7 +95,7 @@ public class SunmiScanModule extends ReactContextBaseJavaModule {
   private void registerReceiver() {
     IntentFilter filter = new IntentFilter();
     filter.addAction(ACTION_DATA_CODE_RECEIVED);
-    reactContext.registerReceiver(receiver, filter);
+    reactContext.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);
   }
 
   private static void sendEvent(String msg) {
