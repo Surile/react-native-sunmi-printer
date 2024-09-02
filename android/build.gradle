@@ -56,4 +56,5 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"  // From node_modules
   implementation "com.sunmi:printerlibrary:1.0.13"
+  implementation "com.sunmi:printerlibrary:1.0.18"
 }
