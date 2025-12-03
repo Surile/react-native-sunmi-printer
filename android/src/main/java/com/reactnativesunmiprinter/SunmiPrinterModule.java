@@ -388,14 +388,42 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
    * @param pixelWidth
    */
   @ReactMethod
-  public void printBitmap(String encodedString, int pixelWidth) throws RemoteException {
-    final String pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
-    final byte[] decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT);
-    Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
-    int w = decodedBitmap.getWidth();
-    Integer h = decodedBitmap.getHeight();
-    Bitmap scaledImage = Bitmap.createScaledBitmap(decodedBitmap, pixelWidth, (pixelWidth / w) * h, false);
-    printerService.printBitmap(scaledImage, innerResultCallback);
+  public void printBitmap(String encodedString, int pixelWidth, Promise promise) {
+    try {
+      p = promise;
+
+      // Remove data URI prefix if present
+      final String pureBase64Encoded = encodedString.contains(",")
+          ? encodedString.substring(encodedString.indexOf(",") + 1)
+          : encodedString;
+
+      final byte[] decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT);
+      Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
+
+      if (decodedBitmap == null) {
+        promise.reject("DECODE_ERROR", "Failed to decode base64 image");
+        return;
+      }
+
+      int w = decodedBitmap.getWidth();
+      int h = decodedBitmap.getHeight();
+
+      if (w <= 0 || h <= 0) {
+        promise.reject("INVALID_SIZE", "Image width and height must be > 0");
+        return;
+      }
+
+      int scaledHeight = (pixelWidth * h) / w;
+      Bitmap scaledImage = Bitmap.createScaledBitmap(decodedBitmap, pixelWidth, scaledHeight, false);
+
+      printerService.printBitmap(scaledImage, innerResultCallback);
+
+      // Clean up to avoid memory leaks
+      decodedBitmap.recycle();
+
+    } catch (Exception e) {
+      promise.reject("PRINT_ERROR", "Failed to print image: " + e.getMessage());
+    }
   }
 
   /**
@@ -424,7 +452,7 @@ public class SunmiPrinterModule extends ReactContextBaseJavaModule {
     final String pureBase64Encoded = encodedString.substring(encodedString.indexOf(",") + 1);
     final byte[] decodedBytes = Base64.decode(pureBase64Encoded, Base64.DEFAULT);
     Bitmap decodedBitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
-	  int w = decodedBitmap.getWidth();
+    int w = decodedBitmap.getWidth();
     Integer h = decodedBitmap.getHeight();
     Bitmap scaledImage = Bitmap.createScaledBitmap(decodedBitmap, pixelWidth, (pixelWidth / w) * h, false);
     printerService.printBitmapCustom(scaledImage, type, innerResultCallback);
